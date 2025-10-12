@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block title %}關於 - 第五組 | About - Group 5{% endblock %}
+{% block content %}
+  <h1>關於我 <span class="sub-en">About Me</span></h1>
+
+  <p>
+    {{ sc.about_text|default:"這裡放你的簡介、背景與興趣。" }}<br>
+    <span class="sub-en">
+      {{ sc.about_text_en|default:"Here goes a short bio about your background and interests." }}
+    </span>
+  </p>
+
+  <hr>
+  <section>
+    <h2>我們的目標 <span class="sub-en">Our Goal</span></h2>
+    <p>
+      以清楚、簡潔的方式分享我們的學習與作品。<br>
+      <span class="sub-en">We share our learning and work in a clear and concise way.</span>
+    </p>
+  </section>
+{% endblock %}

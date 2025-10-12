@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}首頁 - 第五組 | Home - Group 5{% endblock %}
+{% block content %}
+  <h1>
+    {{ sc.home_headline|default:"歡迎來到我們第五組網站！" }}<br>
+    <small style="font-weight:400;">{{ sc.home_headline_en|default:"Welcome to Group 5!" }}</small>
+  </h1>
+
+  <p>
+    （這段文字固定；上面的標題可在後台更新）<br>
+    <span style="opacity:.85;">(This paragraph is fixed; the headline above can be updated in the admin.)</span>
+  </p>
+
+  <!-- 六格相片牆（每張可點進各自內頁） -->
+  <section class="photo-grid">
+    <a class="photo-card" href="{% url 'card' 1 %}">
+      <img src="{% static 'images/p1.jpg' %}" alt="Self Introduction">
+    </a>
+    <a class="photo-card" href="{% url 'card' 2 %}">
+      <img src="{% static 'images/p2.jpg' %}" alt="Interests">
+    </a>
+    <a class="photo-card" href="{% url 'card' 3 %}">
+      <img src="{% static 'images/p3.jpg' %}" alt="Learning Projects">
+    </a>
+    <a class="photo-card" href="{% url 'card' 4 %}">
+      <img src="{% static 'images/p4.jpg' %}" alt="Photo Works">
+    </a>
+    <a class="photo-card" href="{% url 'card' 5 %}">
+      <img src="{% static 'images/p5.jpg' %}" alt="Team Roles">
+    </a>
+    <a class="photo-card" href="{% url 'card' 6 %}">
+      <img src="{% static 'images/p6.jpg' %}" alt="Get in Touch">
+    </a>
+  </section>
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}{{ item.title_zh }} - 第五組 | {{ item.title_en }} - Group 5{% endblock %}
+{% block content %}
+  <article class="card-detail">
+    <header>
+      <h1>{{ item.title_zh }} <span class="sub-en">{{ item.title_en }}</span></h1>
+    </header>
+
+    <figure class="hero">
+      <img src="{% static item.image %}" alt="{{ item.title_en }}">
+    </figure>
+
+    <p style="margin-top:10px;">
+      {{ item.body_zh }}<br>
+      <span class="sub-en">{{ item.body_en }}</span>
+    </p>
+
+    <p style="margin-top:20px;">
+      <a href="{% url 'home' %}">← 回首頁 <span class="sub-en">Back to Home</span></a>
+    </p>
+  </article>
+{% endblock %}

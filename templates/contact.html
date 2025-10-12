@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% block title %}聯繫 - 第五組 | Contact - Group 5{% endblock %}
+{% block content %}
+  <h1>聯繫方式 <span class="sub-en">Contact</span></h1>
+
+  <ul>
+    <li>
+      電子郵件：{{ sc.contact_email|default:"owner@example.com" }}<br>
+      <span class="sub-en">Email: {{ sc.contact_email|default:"owner@example.com" }}</span>
+    </li>
+
+    {% if sc and sc.social_x %}
+    <li>
+      X（Twitter）：<a href="{{ sc.social_x }}" target="_blank">{{ sc.social_x }}</a><br>
+      <span class="sub-en">X (Twitter): <a href="{{ sc.social_x }}" target="_blank">{{ sc.social_x }}</a></span>
+    </li>
+    {% endif %}
+
+    {% if sc and sc.social_ig %}
+    <li>
+      Instagram：<a href="{{ sc.social_ig }}" target="_blank">{{ sc.social_ig }}</a><br>
+      <span class="sub-en">Instagram: <a href="{{ sc.social_ig }}" target="_blank">{{ sc.social_ig }}</a></span>
+    </li>
+    {% endif %}
+
+    {% if sc and sc.social_fb %}
+    <li>
+      Facebook：<a href="{{ sc.social_fb }}" target="_blank">{{ sc.social_fb }}</a><br>
+      <span class="sub-en">Facebook: <a href="{{ sc.social_fb }}" target="_blank">{{ sc.social_fb }}</a></span>
+    </li>
+    {% endif %}
+  </ul>
+
+  <h2>留言給我 <span class="sub-en">Send a Message</span></h2>
+  <form method="post" class="form">
+    {% csrf_token %}
+    <p>
+      <label for="{{ form.name.id_for_label }}">姓名 <span class="sub-en">Name</span></label><br>
+      {{ form.name }}
+      {{ form.name.errors }}
+    </p>
+    <p>
+      <label for="{{ form.email.id_for_label }}">Email</label><br>
+      {{ form.email }}
+      {{ form.email.errors }}
+    </p>
+    <p>
+      <label for="{{ form.message.id_for_label }}">訊息 <span class="sub-en">Message</span></label><br>
+      {{ form.message }}
+      {{ form.message.errors }}
+    </p>
+    <button type="submit">送出 <span class="sub-en">Submit</span></button>
+  </form>
+
+  <p class="sub-en" style="opacity:.8;margin-top:.5rem;">
+    * Emails are printed to the server console in development (console email backend).
+  </p>
+{% endblock %}
