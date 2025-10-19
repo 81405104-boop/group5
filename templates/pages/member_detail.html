@@ -1,0 +1,79 @@
+{% extends 'pages/base.html' %}
+{% load static %}
+{% block title %}{{ profile.name }} 的個人介紹 | {{ profile.name_en }} Profile{% endblock %}
+
+{% block content %}
+  <div style="max-width: 800px; margin: 60px auto; text-align: center; padding: 0 20px;">
+
+    <!-- 頭像 -->
+    <img src="{% static profile.img %}" alt="{{ profile.name }}"
+         style="width: 180px; height: 180px; border-radius: 50%; object-fit: cover;
+                margin-bottom: 25px; box-shadow: 0 0 20px rgba(0,255,255,0.5);">
+
+    <!-- 姓名 -->
+    <h1 style="font-size: 2.2em; color: #ffffff; text-shadow: 0 0 15px rgba(0,255,255,0.6); margin-bottom: 10px;">
+      {{ profile.name }}
+    </h1>
+    <h3 style="font-size: 1.3em; color: #99ffff; margin-bottom: 30px;">
+      {{ profile.name_en }}
+    </h3>
+
+    <!-- 中文介紹 -->
+    {% if profile.intro_zh %}
+    <div style="margin-bottom: 25px;">
+      <h2 style="font-size: 1.5em; color: #00e5ff; text-shadow: 0 0 8px rgba(0,255,255,0.4);">
+        🌏 中文介紹
+      </h2>
+      <p style="font-size: 1.1em; color: #eeeeee; line-height: 1.8;
+                text-shadow: 0 0 5px rgba(0,255,255,0.2); margin-top: 10px;">
+        {{ profile.intro_zh }}
+      </p>
+    </div>
+    {% endif %}
+
+    <!-- 英文介紹 -->
+    {% if profile.intro_en %}
+    <div style="margin-bottom: 25px;">
+      <h2 style="font-size: 1.5em; color: #00e5ff; text-shadow: 0 0 8px rgba(0,255,255,0.4);">
+        🌍 English Introduction
+      </h2>
+      <p style="font-size: 1.1em; color: #cccccc; line-height: 1.8;
+                text-shadow: 0 0 5px rgba(0,255,255,0.2); margin-top: 10px;">
+        {{ profile.intro_en }}
+      </p>
+    </div>
+    {% endif %}
+
+    <!-- 技能與興趣 -->
+    {% if profile.skills %}
+    <div style="margin-top: 30px;">
+      <h2 style="font-size: 1.5em; color: #00e5ff; text-shadow: 0 0 8px rgba(0,255,255,0.4);">
+        💡 Skills / Interests
+      </h2>
+      <ul style="list-style: none; padding: 0; margin-top: 15px;">
+        {% for skill in profile.skills %}
+          <li style="display: inline-block; margin: 6px; padding: 8px 14px;
+                     background: rgba(0,255,255,0.1); border: 1px solid rgba(0,255,255,0.3);
+                     border-radius: 20px; color: #00ffff; font-size: 1em;
+                     text-shadow: 0 0 6px rgba(0,255,255,0.3);">
+            {{ skill }}
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+    {% endif %}
+
+    <!-- 返回首頁按鈕 -->
+    <div style="margin-top: 50px;">
+      <a href="/"
+         style="background: linear-gradient(90deg, #00bcd4, #0097a7);
+                color: white; padding: 12px 30px;
+                text-decoration: none; border-radius: 8px; font-size: 1.1em;
+                box-shadow: 0 0 15px rgba(0,255,255,0.5);
+                transition: all 0.3s ease;">
+        ← 回首頁 / Back to Home
+      </a>
+    </div>
+
+  </div>
+{% endblock %}
